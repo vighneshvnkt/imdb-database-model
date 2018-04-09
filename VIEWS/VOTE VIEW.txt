@@ -1,0 +1,6 @@
+alter view VoteCountView as
+select username,poll_name,option_name,vote_count 
+from useraccount join poll_options on
+poll_options.userid = useraccount.userid
+join polls on
+poll_options.poll_id = polls.poll_id

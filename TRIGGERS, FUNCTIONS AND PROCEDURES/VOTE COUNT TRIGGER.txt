@@ -1,0 +1,19 @@
+ALTER TRIGGER VOTE_COUNT ON POLL_OPTIONS AFTER INSERT AS
+begin
+declare @option_id int
+declare @option_name nvarchar(max)
+declare @vote_count int;
+declare @selection bit
+declare @poll_ID int
+declare @count2 int = 0;
+declare @rowcount int = 0;
+
+select @option_name = option_name from inserted;
+select @selection = has_selected from inserted;
+select @poll_ID = poll_id from inserted;
+select @option_id = option_id from inserted
+SELECT @rowcount = COUNT(*) from poll_options where option_name = @option_name and poll_id = @poll_ID and has_selected = 1
+--exec increment_vote_count @option_name, @selection, @poll_id, @rowcount
+update poll_options set vote_count = @rowcount where option_name = @option_name and poll_id = @poll_ID
+end
+

@@ -1,0 +1,9 @@
+ALTER FUNCTION getMyReviews(@username nvarchar(max))
+RETURNS TABLE
+AS
+RETURN
+(SELECT *
+FROM USER_REVIEW_VIEW
+WHERE USERNAME = @username);
+
+SELECT * FROM  getMyReviews('vighneshvnkt') AS REVIEW1;

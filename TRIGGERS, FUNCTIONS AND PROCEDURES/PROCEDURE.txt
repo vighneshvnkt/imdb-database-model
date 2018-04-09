@@ -1,0 +1,29 @@
+ALTER PROCEDURE checkTicketAvailability @showtime int, @capacity int as
+BEGIN
+declare @ticket_id int
+declare @price int
+declare @quantity int
+declare @theatre_id int
+declare @movie_id int
+declare @showtime_id int
+declare @count1 int
+declare TicketCursor Cursor for select * from TICKETS WHERE SHOWTIME_ID = @showtime
+open TicketCursor
+if @@CURSOR_ROWS = -1
+begin
+	fetch next from TicketCursor into
+	@ticket_id, @price, @quantity, @theatre_id, @movie_id, @showtime_id
+		while @@FETCH_STATUS = 0
+		begin
+			set @count1 = @count1 + @quantitY;;	
+			fetch next from TicketCursor into
+			@ticket_id, @price, @quantity, @theatre_id, @movie_id, @showtime_id
+		end
+end
+close TicketCursor
+deallocate TicketCursor
+if @count1 < @capacity
+			print 'Ticket bought successfully'
+		else
+			print 'House full'
+END
