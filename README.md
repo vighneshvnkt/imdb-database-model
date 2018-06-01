@@ -1,6 +1,6 @@
 # imdb-database-model
 Designed and populated IMDB database in MSSQL, Oracle and MySQL using Toad Data Modeler to return results of searches by user, write reviews and vote for polls
-<br/> View JPG file for data model
+<br/> [View Data Model] (https://github.com/vighneshvnkt/imdb-database-model/blob/master/Oracle%2011g%20Release%201.png)
 
 ## Running the example
 
